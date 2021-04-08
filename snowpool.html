@@ -11,13 +11,32 @@
     })(window,document,'script','http://buzzdata.local:8080/jukebox.js','lbhq');
       lbhq('create', 'LB-B7746001-1');
       lbhq('_env', 'development');
+  function startTime() {
+     var today=new Date();
+     var day = today.getDate();
+     var month = today.getMonth();
+     var year = today.getFullYear();
+     var h=today.getHours();
+     var m=today.getMinutes();
+     var s=today.getSeconds();
+     m = checkTime(m);
+     s = checkTime(s);
+     document.getElementById('txt').innerHTML = "Date: " + day + "/" + month + "/" + year + " " + "Clock: " + h+":"+m+":"+s;
+     var t = setTimeout(function(){startTime()},500);
+ }
+
+ function checkTime(i) {
+     if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+     return i;
+ }
 </script>
    <meta property="og:image" content="https://app.cdn.lookbookhq.com/development/clients/1/thumbnails/2016-10-03/170859/Mcdonalds.jpg">
    <meta property="og:image:height" content="350">
+   <meta property="og:updated_time" content="123465789" />
    <meta property="og:image:width" content="500">
    <meta property="og:title" content="Coffee" />
  </head>
-<body>
+<body onload="startTime()">
  <a href="#" data-lookbook-overlay-href="http://buzzdata.buzzdata.local:4000/c/federal-environment-?x=qMz2-O&lb-mode=overlay">Track link</a>
   <div id="new_website_tools">
   </div>
